@@ -107,10 +107,10 @@ list_resources()
     ./aws.py list_resources
 }
 
-dissolve()
-{
+#dissolve()
+#{
 #    ./aws.py dissolve
-}
+#}
 
 start_headnode()
 {
