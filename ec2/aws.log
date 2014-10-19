@@ -1580,3 +1580,7 @@ INFO:root:Security group: swift_security_group1 is already present
 INFO:root:KEYPAIR exists, registered
 INFO:root:Security group: swift_security_group1 is already present
 INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
