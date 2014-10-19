@@ -1,6 +1,6 @@
 #!/bin/bash
 HEADNODE=$1
-CONCURRENCY=" -c 1 "
+CONCURRENCY=" -c 2 "
 #WORKER_INIT_SCRIPT
 WORKERPORT="50005"
 #Ping timeout
