@@ -1,0 +1,1582 @@
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=54.69.226.69
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/xvdb /dev/xvdc
+mkfs.ext4 /dev/md0; mount -t ext4 /dev/md0 /scratch; chmod 777 /scratch
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=2428cf3824a0e95276369c250a666bf7f6cd2fd3, name=swift-worker-000, state=3, public_ips=[], private_ips=['172.31.26.249'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=042ccf2a8c2abf5bd4890256eefc2bf2d6480899, name=swift-worker-001, state=3, public_ips=[], private_ips=['172.31.23.220'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=54.69.208.175
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/xvdb /dev/xvdc
+mkfs.ext4 /dev/md0; mount -t ext4 /dev/md0 /scratch; chmod 777 /scratch
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=b0798e5ca65cd000e68ee34fcc0678b0259a8185, name=swift-worker-000, state=3, public_ips=[], private_ips=['172.31.28.16'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=d46bf7265137508703146778f127c5c0146a6ee1, name=swift-worker-001, state=3, public_ips=[], private_ips=['172.31.21.158'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=54.68.201.181
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/xvdb /dev/xvdc
+mkfs.ext4 /dev/md0; mount -t ext4 /dev/md0 /scratch; chmod 777 /scratch
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=5af4a017fbe299f25cddbe14847b7f6a466b64c4, name=swift-worker-000, state=3, public_ips=[], private_ips=['172.31.4.174'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=a9780c476d74ca5ea46c72c83ac9a78687e1c383, name=swift-worker-001, state=3, public_ips=[], private_ips=['172.31.3.126'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=50.112.180.219
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/xvdb /dev/xvdc
+mkfs.ext4 /dev/md0; mount -t ext4 /dev/md0 /scratch; chmod 777 /scratch
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=1ce156e8f6762870f073b372e56c7740e852acab, name=swift-worker-000, state=3, public_ips=[], private_ips=['172.31.31.225'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=c51ea32f6f5ffc37099231ee3b54317d528d03a4, name=swift-worker-001, state=3, public_ips=[], private_ips=['172.31.29.108'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=54.69.227.190
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/xvdb /dev/xvdc
+mkfs.ext4 /dev/md0; mount -t ext4 /dev/md0 /scratch; chmod 777 /scratch
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=45ee8e66fd58b37a52ad7d648a1a35c2bd101c37, name=swift-worker-000, state=3, public_ips=[], private_ips=['172.31.2.19'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=5f13962b1bbe81bf9f04c933ee00b897bd141e1c, name=i-a82540a7, state=3, public_ips=[], private_ips=['172.31.9.250'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=54.69.227.190
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/xvdb /dev/xvdc
+mkfs.ext4 /dev/md0; mount -t ext4 /dev/md0 /scratch; chmod 777 /scratch
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=e72577a7519f6493f3dd641fbc88f57ec6f17e5a, name=swift-worker-001, state=3, public_ips=[], private_ips=['172.31.15.189'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=54.68.218.18
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/xvdb /dev/xvdc
+mkfs.ext4 /dev/md0; mount -t ext4 /dev/md0 /scratch; chmod 777 /scratch
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=f2bed70af78011cd5d9fdc68ebd5a4f9fca447ae, name=swift-worker-000, state=3, public_ips=[], private_ips=['172.31.19.51'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=d7bc95d3daa5c0803149a1c21692d5fc6c8af23a, name=swift-worker-001, state=3, public_ips=[], private_ips=['172.31.17.142'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=54.186.210.173
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/xvdb /dev/xvdc
+mkfs.ext4 /dev/md0; mount -t ext4 /dev/md0 /scratch; chmod 777 /scratch
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=56b71555d9359cde53be5bcf4b5baf8503b53696, name=swift-worker-000, state=3, public_ips=[], private_ips=['172.31.24.169'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=7148d5c8b28f33841af61433b9daabc527623ff6, name=swift-worker-001, state=3, public_ips=[], private_ips=['172.31.17.61'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=54.186.184.175
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/xvdb /dev/xvdc
+mkfs.ext4 /dev/md0; mount -t ext4 /dev/md0 /scratch; chmod 777 /scratch
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=a40d9f4512e200c507c6acb90125318263ce4f5a, name=swift-worker-000, state=3, public_ips=[], private_ips=['172.31.30.245'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=72130ab5eeffd1676f76024ead419272fccca968, name=swift-worker-001, state=3, public_ips=[], private_ips=['172.31.23.101'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=54.68.69.97
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/xvdb /dev/xvdc
+mkfs.ext4 /dev/md0; mount -t ext4 /dev/md0 /scratch; chmod 777 /scratch
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=4ef53d6c14fc84042a38493117335b9a5fe97b89, name=swift-worker-000, state=3, public_ips=[], private_ips=['172.31.19.107'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=ab3838d63cbcc9545823b5fab46e12eed9ee6f35, name=swift-worker-001, state=3, public_ips=[], private_ips=['172.31.18.136'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=54.68.186.137
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/xvdb /dev/xvdc
+mkfs.ext4 /dev/md0; mount -t ext4 /dev/md0 /scratch; chmod 777 /scratch
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=fff41f92c0ebe0514a70b4aa130a254301167ab0, name=swift-worker-000, state=3, public_ips=[], private_ips=['172.31.30.148'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=640f696816aae96822e3a6029a31c7012f7f99ae, name=swift-worker-001, state=3, public_ips=[], private_ips=['172.31.18.72'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=54.69.154.233
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/xvdb /dev/xvdc
+mkfs.ext4 /dev/md0; mount -t ext4 /dev/md0 /scratch; chmod 777 /scratch
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=558b667e647fed236959facf47f4c42047778344, name=swift-worker-000, state=3, public_ips=[], private_ips=['172.31.29.151'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=ec0eee9db76194a1c5a8024b4a35f96ab16a3f9b, name=swift-worker-001, state=3, public_ips=[], private_ips=['172.31.16.21'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=54.69.220.30
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/xvdb /dev/xvdc
+mkfs.ext4 /dev/md0; mount -t ext4 /dev/md0 /scratch; chmod 777 /scratch
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=e83f8b9e0ee3f586955fc7bc8f0998fb99517cca, name=swift-worker-000, state=3, public_ips=[], private_ips=['172.31.29.70'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=54.186.132.231
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/xvdb /dev/xvdc
+mkfs.ext4 /dev/md0; mount -t ext4 /dev/md0 /scratch; chmod 777 /scratch
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=66ab1993983a6c6e4a158a54aedc0abd1fd9f524, name=swift-worker-000, state=3, public_ips=[], private_ips=['172.31.20.226'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=f7b481d4fbc26057794c576f8ca06ffb5517eb9b, name=swift-worker-001, state=3, public_ips=[], private_ips=['172.31.24.1'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=5dbc7c8e30fc7271021475a393ff7fdcfe1958c6, name=swift-worker-002, state=3, public_ips=[], private_ips=['172.31.26.121'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=61b733df1cff3e6dba9f4f049cfdb9797c95d0c8, name=swift-worker-003, state=3, public_ips=[], private_ips=['172.31.18.20'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=024f69f1206874ae14ad7a61de9b8f3d85fde88d, name=swift-worker-004, state=3, public_ips=[], private_ips=['172.31.28.76'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=3b888d519560e5ba30f381a3d2d00239a7b8e184, name=swift-worker-005, state=3, public_ips=[], private_ips=['172.31.28.65'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=100c0e2232079a765a2266c9174a17984b82094c, name=swift-worker-006, state=3, public_ips=[], private_ips=['172.31.22.226'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=fb9180dfb52e190af360fa9d94783e6222636e20, name=swift-worker-007, state=3, public_ips=[], private_ips=['172.31.24.25'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=f0ff68d157c034819588abf03ba16207f40eefb3, name=swift-worker-008, state=3, public_ips=[], private_ips=['172.31.22.86'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=6f1ae1a9d1b884023f2cd9a75f90e0fae68aafa1, name=swift-worker-009, state=3, public_ips=[], private_ips=['172.31.18.136'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=63cf414843dc824cee6d13ac25d0944592f411fd, name=swift-worker-010, state=3, public_ips=[], private_ips=['172.31.16.58'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=304f2190f77cf4b2561fdce02503abd3960c6768, name=swift-worker-011, state=3, public_ips=[], private_ips=['172.31.31.32'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=7cf597c14f0d18044100b15109d61de16868d8a4, name=swift-worker-012, state=3, public_ips=[], private_ips=['172.31.18.251'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=560f12be0ca640d0d5eda171eb4cbaf518cc951e, name=swift-worker-013, state=3, public_ips=[], private_ips=['172.31.20.14'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=1a6d02d5c47adbdb46d3770cf02775785770fa1a, name=swift-worker-014, state=3, public_ips=[], private_ips=['172.31.26.172'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=bcd2a7f811d4905fe2ecfb77f56a22a54462ff64, name=swift-worker-015, state=3, public_ips=[], private_ips=['172.31.31.208'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=54.69.242.110
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/xvdb /dev/xvdc
+mkfs.ext4 /dev/md0; mount -t ext4 /dev/md0 /scratch; chmod 777 /scratch
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=82178c49b56902c87d50609d9f709c35cdbcd980, name=swift-worker-000, state=3, public_ips=[], private_ips=['172.31.11.240'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=f5300ab40f20ba3015ec8af6657a47e61523fcc2, name=swift-worker-001, state=3, public_ips=[], private_ips=['172.31.1.36'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=00f3677434f84214fabf09d95f9fcdc9af5fc38e, name=swift-worker-002, state=3, public_ips=[], private_ips=['172.31.13.87'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=16bc7bc64399d6f24c7804172d0bcf74d6a65cff, name=swift-worker-003, state=3, public_ips=[], private_ips=['172.31.5.142'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Worker node started : <Node: uuid=021cc71e3dc52f199b2e4bd5546799324cb583d8, name=swift-worker-004, state=3, public_ips=[], private_ips=['172.31.8.173'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=54.186.65.254
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/xvdb /dev/xvdc
+mkfs.ext4 /dev/md0; mount -t ext4 /dev/md0 /scratch; chmod 777 /scratch
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=d5203b276a4f9693e394133dae83ffa2c97e8c15, name=swift-worker-000, state=3, public_ips=[], private_ips=['172.31.20.138'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=54.69.251.71
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/xvdb /dev/xvdc
+mkfs.ext4 /dev/md0; mount -t ext4 /dev/md0 /scratch; chmod 777 /scratch
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=bc23c4207892640fa27411288d293f9335ff6933, name=swift-worker-000, state=3, public_ips=[], private_ips=['172.31.30.174'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=54.187.114.59
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/xvdb /dev/xvdc
+mkfs.ext4 /dev/md0; mount -t ext4 /dev/md0 /scratch; chmod 777 /scratch
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=390c614fe522026c4aec683351f46fcb94492d75, name=swift-worker-000, state=3, public_ips=[], private_ips=['172.31.20.199'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=54.69.0.190
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/xvdb /dev/xvdc
+mkfs.ext4 /dev/md0; mount -t ext4 /dev/md0 /scratch; chmod 777 /scratch
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=01727bf633462ac4894dcfba7f266e5bf5bec5c9, name=swift-worker-000, state=3, public_ips=[], private_ips=['172.31.27.142'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=54.186.138.185
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/xvdb /dev/xvdc
+mkfs.ext4 /dev/md0; mount -t ext4 /dev/md0 /scratch; chmod 777 /scratch
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=0c65c02ed321b2e2f1f2dc090e6715d380315f76, name=swift-worker-000, state=3, public_ips=[], private_ips=['172.31.24.254'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=54.187.118.160
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/xvdb /dev/xvdc
+mkfs.ext4 /dev/md0; mount -t ext4 /dev/md0 /scratch; chmod 777 /scratch
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=30382a8cdaa5cd90e19d083e4af3538ceae325b4, name=swift-worker-000, state=3, public_ips=[], private_ips=['172.31.24.186'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=54.187.55.82
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=fb0f25040fdcaecd3c5bd66f972b6a50d76c8f9b, name=swift-worker-000, state=3, public_ips=[], private_ips=['172.31.7.250'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=54.69.154.145
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=016eee5f9105bf886f6ed8a47cbad72603d9b5ae, name=swift-worker-000, state=3, public_ips=[], private_ips=['172.31.6.242'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Worker userdata : #!/bin/bash
+#Replace_me
+HEADNODE=54.69.39.15
+CONCURRENCY="-c 1"
+
+WORKERPORT="50005"
+#Ping timeout
+apt-get update
+apt-get install -y build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support libtool mdadm
+apt-get install -y automake
+cd /home/ubuntu
+git clone https://github.com/s3fs-fuse/s3fs-fuse
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr
+make
+sudo make install
+cd /usr/local/bin
+wget http://users.rcc.uchicago.edu/~yadunand/jdk-7u51-linux-x64.tar.gz; tar -xzf jdk-7u51-linux-x64.tar.gz;
+wget http://users.rcc.uchicago.edu/~yadunand/swift-trunk.tar.gz; tar -xzf swift-trunk.tar.gz
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+mkdir /scratch;
+mkdir /s3; chmod 777 /s3;
+PTIMEOUT=4
+#Disk_setup
+export JAVA=/usr/local/bin/jdk1.7.0_51/bin
+export SWIFT=/usr/local/bin/swift-trunk/bin
+export PATH=$JAVA:$SWIFT:$PATH
+export ENABLE_WORKER_LOGGING
+export WORKER_LOGGING_LEVEL=DEBUG
+worker_loop ()
+{
+    while :
+    do
+        echo "Connecting to HEADNODE on $HEADNODE"
+        worker.pl -w 3600 $CONCURRENCY http://$HEADNODE:$WORKERPORT 0099 /var/log
+        sleep 5
+    done
+}
+worker_loop &
+
+INFO:root:Worker node started : <Node: uuid=fe22a49f0fe7a52f9c5930f820d866121a747510, name=swift-worker-000, state=3, public_ips=[], private_ips=['172.31.17.15'], provider=Amazon EC2 (us-west-2) ...>
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
+INFO:root:Security group: swift_security_group1 is already present
+INFO:root:KEYPAIR exists, registered
