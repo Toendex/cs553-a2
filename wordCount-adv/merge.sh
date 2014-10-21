@@ -1,0 +1,1 @@
+python $PWD/merge.py $@
