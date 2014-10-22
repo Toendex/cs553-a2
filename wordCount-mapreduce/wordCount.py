@@ -19,11 +19,11 @@ filePatten=os.path.dirname(sys.argv[3])+'/../output/countInter-'+str(index)+'-'
 
 outputFileList=[]
 for i in range(0,outputFileNum):
-    f=open(filePatten+i.zfill(4))
+    f=open(filePatten+str(i))
     outputFileList.append(f)
 
 for word,num in cnt.items():
-    i=hash(word)%index
+    i=hash(word)%outputFileNum
     outstr='%d\t%s\n' % (num, word)
     outputFileList[i].write(outstr.encode('utf-8'))
 

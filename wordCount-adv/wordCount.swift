@@ -1,7 +1,7 @@
 type file;
 
 file wc_script <"wordCount.py">;
-file m_script <"merge.py">;
+file m_py <"merge.py">;
 
 app (file outfile) wordCount (file infile, file wc_script)
 {
@@ -26,4 +26,4 @@ foreach f,i in infile {
 file mfile <"output/result.txt">;
 file mlog <"output/mlog.txt">;
 
-mfile=merge(wcfile,m_script);
+mfile=merge(wcfile,m_py);
