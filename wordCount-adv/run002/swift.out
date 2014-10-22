@@ -1,0 +1,7 @@
+Swift trunk git-rev: 2d334140f2c288e5aeb3d354de0ecda35b4b3aac heads/master 6130 (modified locally)
+RunID: run002
+Warning: The @ syntax for function invocation is deprecated
+Progress: Wed, 22 Oct 2014 05:05:56+0000
+test
+Progress: Wed, 22 Oct 2014 05:05:57+0000  Stage in:1  Finished successfully:10
+Final status:Wed, 22 Oct 2014 05:05:57+0000  Finished successfully:12

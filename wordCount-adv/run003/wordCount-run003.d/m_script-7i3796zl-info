@@ -1,0 +1,53 @@
+Progress  2014-10-22 05:20:08.488245314+0000  LOG_START
+
+_____________________________________________________________________________
+
+        Wrapper (_swiftwrap)
+_____________________________________________________________________________
+
+Job directory mode is: link on shared filesystem
+PID=4969
+HOST=
+PWD=/tmp/ubuntu/swiftwork/wordCount-run003
+DIR=jobs/7/m_script-7i3796zl
+EXEC=/home/ubuntu/swift-cloud-tutorial/cs553-a2/wordCount-adv/merge.sh
+STDIN=
+STDOUT=output/result.txt
+STDERR=stderr.txt
+DIRS=_concurrent/wcfile-17-R|_concurrent/wcfile-17-R/[10-19]|output
+INF=_concurrent/wcfile-17-R/[9]|_concurrent/wcfile-17-R/[5]|_concurrent/wcfile-17-R/[0]|_concurrent/wcfile-17-R/[10-19]/[10]|_concurrent/wcfile-17-R/[1]|_concurrent/wcfile-17-R/[4]|_concurrent/wcfile-17-R/[6]|_concurrent/wcfile-17-R/[3]|merge.py|_concurrent/wcfile-17-R/[7]|_concurrent/wcfile-17-R/[2]|_concurrent/wcfile-17-R/[8]
+OUTF=output/result.txt
+COLLECT=
+CDM_FILE=
+ARGS=_concurrent/wcfile-17-R/[0] _concurrent/wcfile-17-R/[1] _concurrent/wcfile-17-R/[2] _concurrent/wcfile-17-R/[3] _concurrent/wcfile-17-R/[4] _concurrent/wcfile-17-R/[5] _concurrent/wcfile-17-R/[6] _concurrent/wcfile-17-R/[7] _concurrent/wcfile-17-R/[8] _concurrent/wcfile-17-R/[9] _concurrent/wcfile-17-R/[10-19]/[10]
+ARGC=11
+MPI_RANK=
+PMI_RANK=
+Progress  2014-10-22 05:20:08.495641271+0000  CREATE_JOBDIR
+Created job directory: jobs/7/m_script-7i3796zl
+Progress  2014-10-22 05:20:08.500030894+0000  CREATE_INPUTDIR
+Created output directory: jobs/7/m_script-7i3796zl/_concurrent/wcfile-17-R
+Created output directory: jobs/7/m_script-7i3796zl/_concurrent/wcfile-17-R/[10-19]
+Created output directory: jobs/7/m_script-7i3796zl/output
+Progress  2014-10-22 05:20:08.508718134+0000  LINK_INPUTS
+Linked input: /tmp/ubuntu/swiftwork/wordCount-run003/shared/_concurrent/wcfile-17-R/[9] to jobs/7/m_script-7i3796zl/_concurrent/wcfile-17-R/[9]
+Linked input: /tmp/ubuntu/swiftwork/wordCount-run003/shared/_concurrent/wcfile-17-R/[5] to jobs/7/m_script-7i3796zl/_concurrent/wcfile-17-R/[5]
+Linked input: /tmp/ubuntu/swiftwork/wordCount-run003/shared/_concurrent/wcfile-17-R/[0] to jobs/7/m_script-7i3796zl/_concurrent/wcfile-17-R/[0]
+Linked input: /tmp/ubuntu/swiftwork/wordCount-run003/shared/_concurrent/wcfile-17-R/[10-19]/[10] to jobs/7/m_script-7i3796zl/_concurrent/wcfile-17-R/[10-19]/[10]
+Linked input: /tmp/ubuntu/swiftwork/wordCount-run003/shared/_concurrent/wcfile-17-R/[1] to jobs/7/m_script-7i3796zl/_concurrent/wcfile-17-R/[1]
+Linked input: /tmp/ubuntu/swiftwork/wordCount-run003/shared/_concurrent/wcfile-17-R/[4] to jobs/7/m_script-7i3796zl/_concurrent/wcfile-17-R/[4]
+Linked input: /tmp/ubuntu/swiftwork/wordCount-run003/shared/_concurrent/wcfile-17-R/[6] to jobs/7/m_script-7i3796zl/_concurrent/wcfile-17-R/[6]
+Linked input: /tmp/ubuntu/swiftwork/wordCount-run003/shared/_concurrent/wcfile-17-R/[3] to jobs/7/m_script-7i3796zl/_concurrent/wcfile-17-R/[3]
+Linked input: /tmp/ubuntu/swiftwork/wordCount-run003/shared/merge.py to jobs/7/m_script-7i3796zl/merge.py
+Linked input: /tmp/ubuntu/swiftwork/wordCount-run003/shared/_concurrent/wcfile-17-R/[7] to jobs/7/m_script-7i3796zl/_concurrent/wcfile-17-R/[7]
+Linked input: /tmp/ubuntu/swiftwork/wordCount-run003/shared/_concurrent/wcfile-17-R/[2] to jobs/7/m_script-7i3796zl/_concurrent/wcfile-17-R/[2]
+Linked input: /tmp/ubuntu/swiftwork/wordCount-run003/shared/_concurrent/wcfile-17-R/[8] to jobs/7/m_script-7i3796zl/_concurrent/wcfile-17-R/[8]
+Progress  2014-10-22 05:20:08.536285293+0000  EXECUTE
+APP_RESOURCES=real_secs:0.03,kernel_secs:0.00,user_secs:0.02,percent_cpu:97%,max_rss:6016,avg_rss:0,avg_tot_vm:0,avg_priv_data:0,avg_priv_stack:0,avg_shared_text:0,page_size:4096,major_pgfaults:0,minor_pgfaults:1879,swaps:0,invol_context_switches:7,vol_waits:3,fs_reads:0,fs_writes:40,sock_recv:0,sock_send:0,signals:0,exit_status:0
+Moving back to workflow directory /tmp/ubuntu/swiftwork/wordCount-run003
+Progress  2014-10-22 05:20:08.582699285+0000  EXECUTE_DONE
+Job ran successfully
+Progress  2014-10-22 05:20:08.585011756+0000  MOVING_OUTPUTS output/result.txt
+Progress  2014-10-22 05:20:08.589699428+0000  RM_JOBDIR
+Progress  2014-10-22 05:20:08.594260377+0000  TOUCH_SUCCESS
+Progress  2014-10-22 05:20:08.598098529+0000  END

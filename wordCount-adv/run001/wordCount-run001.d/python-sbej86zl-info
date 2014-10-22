@@ -1,0 +1,42 @@
+Progress  2014-10-22 05:03:54.796286732+0000  LOG_START
+
+_____________________________________________________________________________
+
+        Wrapper (_swiftwrap)
+_____________________________________________________________________________
+
+Job directory mode is: link on shared filesystem
+PID=3446
+HOST=
+PWD=/tmp/ubuntu/swiftwork/wordCount-run001
+DIR=jobs/s/python-sbej86zl
+EXEC=/usr/bin/python
+STDIN=
+STDOUT=_concurrent/wcfile-17-R/[10-19]/[10]
+STDERR=stderr.txt
+DIRS=input|_concurrent/wcfile-17-R/[10-19]
+INF=wordCount.py|input/split-0007
+OUTF=_concurrent/wcfile-17-R/[10-19]/[10]
+COLLECT=
+CDM_FILE=
+ARGS=wordCount.py input/split-0007
+ARGC=2
+MPI_RANK=
+PMI_RANK=
+Progress  2014-10-22 05:03:54.883021014+0000  CREATE_JOBDIR
+Created job directory: jobs/s/python-sbej86zl
+Progress  2014-10-22 05:03:54.907975502+0000  CREATE_INPUTDIR
+Created output directory: jobs/s/python-sbej86zl/input
+Created output directory: jobs/s/python-sbej86zl/_concurrent/wcfile-17-R/[10-19]
+Progress  2014-10-22 05:03:54.956681286+0000  LINK_INPUTS
+Linked input: /tmp/ubuntu/swiftwork/wordCount-run001/shared/wordCount.py to jobs/s/python-sbej86zl/wordCount.py
+Linked input: /tmp/ubuntu/swiftwork/wordCount-run001/shared/input/split-0007 to jobs/s/python-sbej86zl/input/split-0007
+Progress  2014-10-22 05:03:55.061661089+0000  EXECUTE
+APP_RESOURCES=real_secs:0.27,kernel_secs:0.00,user_secs:0.04,percent_cpu:18%,max_rss:6928,avg_rss:0,avg_tot_vm:0,avg_priv_data:0,avg_priv_stack:0,avg_shared_text:0,page_size:4096,major_pgfaults:0,minor_pgfaults:1951,swaps:0,invol_context_switches:31,vol_waits:1,fs_reads:0,fs_writes:24,sock_recv:0,sock_send:0,signals:0,exit_status:0
+Moving back to workflow directory /tmp/ubuntu/swiftwork/wordCount-run001
+Progress  2014-10-22 05:03:55.385132280+0000  EXECUTE_DONE
+Job ran successfully
+Progress  2014-10-22 05:03:55.396362225+0000  MOVING_OUTPUTS _concurrent/wcfile-17-R/[10-19]/[10]
+Progress  2014-10-22 05:03:55.436852942+0000  RM_JOBDIR
+Progress  2014-10-22 05:03:55.468803524+0000  TOUCH_SUCCESS
+Progress  2014-10-22 05:03:55.498733511+0000  END

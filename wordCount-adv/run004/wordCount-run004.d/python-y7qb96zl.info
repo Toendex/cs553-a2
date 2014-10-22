@@ -1,0 +1,28 @@
+checking for paramfile
+no paramfile: using command line arguments
+Progress  2014-10-22 05:23:28.066527600+0000  LOG_START
+
+_____________________________________________________________________________
+
+        Wrapper (_swiftwrap.staging)
+_____________________________________________________________________________
+
+/usr/bin/python -out _concurrent/wcfile-17-R/[4] -err stderr.txt -i -d input|_concurrent/wcfile-17-R -if wordCount.py|input/split-0009 -of _concurrent/wcfile-17-R/[4] -cf -cdmfile -status provider -a wordCount.py input/split-0009
+PWD=/tmp/swiftwork/wordCount-run004/jobs/y/python-y7qb96zl
+EXEC=/usr/bin/python
+STDIN=
+STDOUT=_concurrent/wcfile-17-R/[4]
+STDERR=stderr.txt
+DIRS=input|_concurrent/wcfile-17-R
+INF=wordCount.py|input/split-0009
+OUTF=_concurrent/wcfile-17-R/[4]
+COLLECT=
+ARGS=wordCount.py input/split-0009
+ARGC=2
+Progress  2014-10-22 05:23:28.072818385+0000  CREATE_INPUTDIR
+Created output directory: input
+Created output directory: _concurrent/wcfile-17-R
+Progress  2014-10-22 05:23:28.086323215+0000  EXECUTE
+Progress  2014-10-22 05:23:28.138459148+0000  EXECUTE_DONE
+Job ran successfully
+Progress  2014-10-22 05:23:28.141776072+0000  END

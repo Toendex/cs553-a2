@@ -1,0 +1,42 @@
+Progress  2014-10-22 05:20:07.635485838+0000  LOG_START
+
+_____________________________________________________________________________
+
+        Wrapper (_swiftwrap)
+_____________________________________________________________________________
+
+Job directory mode is: link on shared filesystem
+PID=4590
+HOST=
+PWD=/tmp/ubuntu/swiftwork/wordCount-run003
+DIR=jobs/z/python-zh3796zl
+EXEC=/usr/bin/python
+STDIN=
+STDOUT=_concurrent/wcfile-17-R/[4]
+STDERR=stderr.txt
+DIRS=input|_concurrent/wcfile-17-R
+INF=wordCount.py|input/split-0009
+OUTF=_concurrent/wcfile-17-R/[4]
+COLLECT=
+CDM_FILE=
+ARGS=wordCount.py input/split-0009
+ARGC=2
+MPI_RANK=
+PMI_RANK=
+Progress  2014-10-22 05:20:07.685795404+0000  CREATE_JOBDIR
+Created job directory: jobs/z/python-zh3796zl
+Progress  2014-10-22 05:20:07.712052658+0000  CREATE_INPUTDIR
+Created output directory: jobs/z/python-zh3796zl/input
+Created output directory: jobs/z/python-zh3796zl/_concurrent/wcfile-17-R
+Progress  2014-10-22 05:20:07.796394693+0000  LINK_INPUTS
+Linked input: /tmp/ubuntu/swiftwork/wordCount-run003/shared/wordCount.py to jobs/z/python-zh3796zl/wordCount.py
+Linked input: /tmp/ubuntu/swiftwork/wordCount-run003/shared/input/split-0009 to jobs/z/python-zh3796zl/input/split-0009
+Progress  2014-10-22 05:20:07.847203272+0000  EXECUTE
+APP_RESOURCES=real_secs:0.30,kernel_secs:0.01,user_secs:0.03,percent_cpu:16%,max_rss:6628,avg_rss:0,avg_tot_vm:0,avg_priv_data:0,avg_priv_stack:0,avg_shared_text:0,page_size:4096,major_pgfaults:0,minor_pgfaults:1897,swaps:0,invol_context_switches:34,vol_waits:1,fs_reads:0,fs_writes:24,sock_recv:0,sock_send:0,signals:0,exit_status:0
+Moving back to workflow directory /tmp/ubuntu/swiftwork/wordCount-run003
+Progress  2014-10-22 05:20:08.220101984+0000  EXECUTE_DONE
+Job ran successfully
+Progress  2014-10-22 05:20:08.244146660+0000  MOVING_OUTPUTS _concurrent/wcfile-17-R/[4]
+Progress  2014-10-22 05:20:08.306266475+0000  RM_JOBDIR
+Progress  2014-10-22 05:20:08.340211550+0000  TOUCH_SUCCESS
+Progress  2014-10-22 05:20:08.365838994+0000  END
