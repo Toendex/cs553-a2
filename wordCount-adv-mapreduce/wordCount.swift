@@ -43,9 +43,9 @@ foreach i in [0:reduceNum] {
 //    tracef("reduceNum ofn=%s\n",ofn);
     file mfile <single_file_mapper;file=ofn>;
     file rfs[]=reduceinfiles[i];
-    foreach fff in rfs {
-	tracef("reduceinfiles:%d:file:%s\n",i,@fff);
-    }
+//    foreach fff in rfs {
+//	tracef("reduceinfiles:%d:file:%s\n",i,@fff);
+//    }
     mfile=merge(rfs,m_script);
     finalinputs[i]=mfile;
 }
