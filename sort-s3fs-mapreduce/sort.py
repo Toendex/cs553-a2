@@ -3,41 +3,38 @@ import os
 import re
 
 index=int(sys.argv[1])
-outputFileNum=int(sys.argv[2])
-cutPointsFilePath=sys.argv[3]
+cutPointsFilePath=sys.argv[2]
 recordList=[]
-'''
+
 if not os.path.isfile(cutPointsFilePath):
     print >> sys.stderr, 'wordcount error: file Path \"%s\" not exist.' % (filePath)
-cutpointsFile=open(cutpointsFile, 'r')
-'''
-for filePath in sys.argv[4:]:
+cutpointsFile=open(cutPointsFilePath, 'r')
+
+for filePath in sys.argv[3:]:
     if not os.path.isfile(filePath):
-        print >> sys.stderr, 'wordcount error: file Path \"%s\" not exist.' % (filePath)
+        print >> sys.stderr, 'sort error: file Path \"%s\" not exist.' % (filePath)
     f=open(filePath, 'r')
     recordList.extend(filter(None,f.read().split('\r\n')))
 
 recordList.sort(key=lambda x:x[:10])
-
-f=open("sorted",'w')
-f.write('\r\n'.join(recordList))
-f.close()
-
-"""
-filePath=os.path.dirPath(sys.argv[3])+'/../output/'+str(index)+'/';
+filePath=os.path.dirname(sys.argv[3])+'/../output/'+str(index)+'/';
 if not os.path.exists(filePath):
     os.makedirs(filePath)
-
-outputFileList=[]
-for i in range(0,outputFileNum):
+lastPoint=0
+nowPoint=0
+i=0
+for label in filter(None, cutpointsFile.read().split('\r\n')):
+    while nowPoint < len(recordList) and recordList[nowPoint][:10] < label[:10]:
+        nowPoint+=1
     f=open(filePath+str(i)+'.txt','w')
-    outputFileList.append(f)
-
-for word,num in cnt.items():
-    i=hash(word)%outputFileNum
-    outstr='%d\t%s\n' % (num, word)
-    outputFileList[i].write(outstr.encode('utf-8'))
-
-for f in outputFileList:
+    if not lastPoint == nowPoint:
+        f.write('\r\n'.join(recordList[lastPoint:nowPoint]))
+        f.write('\r\n')
     f.close()
-"""
+    i+=1
+    lastPoint=nowPoint
+f=open(filePath+str(i)+'.txt','w')
+if lastPoint < len(recordList):
+    f.write('\r\n'.join(recordList[lastPoint:]))
+    f.write('\r\n')
+f.close()

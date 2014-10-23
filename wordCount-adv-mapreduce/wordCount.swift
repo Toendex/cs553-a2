@@ -52,4 +52,4 @@ foreach i in [0:reduceNum] {
 
 file ffile <"output/finalresult.txt">;
 
-ffile=merge(finalinputs, f_py);
+ffile=final(finalinputs, f_py);

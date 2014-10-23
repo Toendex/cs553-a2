@@ -1,36 +1,40 @@
 type file;
 
-file wc_script <"wordCount.py">;
-file m_script <"merge.py">;
-file f_script <"final.py">;
-
-app (file outfile[]) wordCount (file infile, int index, int reduceNum)
+app (file outfile) findCutPoint (int partNum, file[] infiles)
 {
-    python "/s3/wordCount-s3fs-mapreduce/wordCount.py" index reduceNum @infile;
+    python "/s3/sort-s3fs-mapreduce/findCutPoint.py" partNum @infiles stdout=@outfile;
+}
+
+app (file outfile[]) sort (file infile, int index, file cutPointsFile)
+{
+    python "/s3/sort-s3fs-mapreduce/sort.py" index @cutPointsFile @infile;
 }
 
 app (file outfile) merge (file[] infiles)
 {
-    python "/s3/wordCount-s3fs-mapreduce/merge.py" @filenames(infiles) stdout=@outfile;
+    python "/s3/sort-s3fs-mapreduce/merge.py" @filenames(infiles) stdout=@outfile;
 }
 
 app (file outfile) final (file[] infiles)
 {
-    python "/s3/wordCount-s3fs-mapreduce/final.py" @filenames(infiles) stdout=@outfile;
+    cat @filenames(infiles) stdout=@outfile;
 }
 
-int reduceNum = toInt(arg("reduceNum",   "16"));
+int reduceNum = toInt(arg("reduceNum",   "100"));
 
-file infile[] <filesys_mapper;pattern="split-*", location="/s3/wordCount-s3fs-mapreduce/input">;
+file infiles[] <filesys_mapper;pattern="split-*", location="/s3/sort-s3fs-mapreduce/input">;
+file cutPointsFile <"/s3/sort-s3fs-mapreduce/input/cutPoints">
+
+cutPointsFile=findCutPoint(reduceNum,infiles);
 
 file reduceinfiles[][];
 
-foreach f,i in infile {
+foreach f,i in infiles {
 //    tracef("%s\n",@f);
-    string loc="/s3/wordCount-s3fs-mapreduce/output/"+toString(i);
+    string loc="/s3/sort-s3fs-mapreduce/output/"+toString(i);
 //    tracef("infile location=%s\n",loc);
     file interfiles[] <filesys_mapper; pattern="*.txt", location=loc>;
-    interfiles=wordCount(f,i,reduceNum);
+    interfiles=sort(f,i,cutPointsFile);
     foreach ff in interfiles {
         reduceinfiles[toInt(strcut(@ff,"([0-9]+)\\.txt"))][i]=ff;
     }
@@ -39,7 +43,7 @@ foreach f,i in infile {
 file finalinputs[];
 
 foreach i in [0:reduceNum] {
-    string ofn="/s3/wordCount-s3fs-mapreduce/output/result-"+toString(i)+".txt";
+    string ofn="/s3/sort-s3fs-mapreduce/output/sorted-"+toString(i)+".txt";
 //    tracef("reduceNum ofn=%s\n",ofn);
     file mfile <single_file_mapper;file=ofn>;
     file rfs[]=reduceinfiles[i];
@@ -50,6 +54,6 @@ foreach i in [0:reduceNum] {
     finalinputs[i]=mfile;
 }
 
-file ffile <"/s3/wordCount-s3fs-mapreduce/output/finalresult.txt">;
+file ffile <"/s3/sort-s3fs-mapreduce/output/sorted.txt">;
 
-ffile=merge(finalinputs);
+ffile=final(finalinputs);

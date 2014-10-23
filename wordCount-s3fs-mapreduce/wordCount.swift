@@ -52,4 +52,4 @@ foreach i in [0:reduceNum] {
 
 file ffile <"/s3/wordCount-s3fs-mapreduce/output/finalresult.txt">;
 
-ffile=merge(finalinputs);
+ffile=final(finalinputs);
