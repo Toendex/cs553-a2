@@ -23,18 +23,17 @@ int reduceNum = toInt(arg("reduceNum",   "16"));
 
 file infile[] <filesys_mapper;pattern="split-*", location="input">;
 
-tracef("test\n");
-
 file reduceinfiles[][];
 
 foreach f,i in infile {
 //    tracef("%s\n",@f);
     string loc="output/"+toString(i);
-    tracef("infile location=%s\n",loc);
-    file interfiles[] <filesys_mapper; pattern="*.txt", location=loc>;
+//    tracef("infile location=%s\n",loc);
+    file interfiles[] <filesys_mapper; pattern="[0-9]+.txt", location=loc>;
     interfiles=wordCount(f,i,reduceNum,wc_script);
     foreach ff in interfiles {
-        reduceinfiles[toInt(strcut(@ff,"([0-9]*).txt"))][i]=ff;
+        reduceinfiles[toInt(strcut(@ff,"([0-9]+).txt"))][i]=ff;
+	tracef("%d:%s\n",strcut(@ff,"([0-9]+).txt"),@reduceinfiles[toInt(strcut(@ff,"([0-9]+).txt"))][i]);
     }
 }
 
@@ -44,6 +43,9 @@ foreach i in [0:reduceNum] {
     string ofn="output/result-"+toString(i)+".txt";
     tracef("reduceNum ofn=%s\n",ofn);
     file mfile <single_file_mapper;file=ofn>;
+    foreach fff in reduceinfiles[i] {
+	tracef("reduceinfiles:%d:file:%s\n",i,@fff);
+    }
     mfile=merge(reduceinfiles[i],m_script);
     finalinputs[i]=mfile;
 }
