@@ -24,18 +24,12 @@ int reduceNum = toInt(arg("reduceNum",   "16"));
 file infile[] <filesys_mapper;pattern="split-*", location="input">;
 
 tracef("test\n");
-
-file reduceinfiles[][];
-
 foreach f,i in infile {
 //    tracef("%s\n",@f);
     string pf="countInter-"+@toString(i)+"-";
     tracef("infile pf=%s\n",pf);
     file interfiles[] <filesys_mapper; prefix=pf, location="output">;
     interfiles=wordCount(f,i,reduceNum,wc_script);
-    foreach fi in interfiles {
-        
-    }
 }
 
 file finalinputs[];

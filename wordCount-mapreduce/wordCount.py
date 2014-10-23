@@ -15,11 +15,13 @@ for fileName in sys.argv[3:]:
     token=filter(None,re.split('\W+', f.read().decode('utf-8'), flags=re.UNICODE))
     cnt.update(token)
 
-filePatten=os.path.dirname(sys.argv[3])+'/../output/countInter-'+str(index)+'-'
+filePath=os.path.dirname(sys.argv[3])+'/../output/'+str(index)+'/';
+if not os.path.exist(filePath):
+    os.makedirs(filePath)
 
 outputFileList=[]
 for i in range(0,outputFileNum):
-    f=open(filePatten+str(i))
+    f=open(filePath+str(i),'w')
     outputFileList.append(f)
 
 for word,num in cnt.items():
