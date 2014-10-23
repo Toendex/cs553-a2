@@ -34,7 +34,7 @@ foreach f,i in infile {
     file interfiles[] <filesys_mapper; pattern="*.txt", location=loc>;
     interfiles=wordCount(f,i,reduceNum,wc_script);
     foreach ff in interfiles {
-        reduceinfiles[toInt(@ff)][i]=ff;
+        reduceinfiles[toInt(strcut(@ff,"([0-9]*).txt"))][i]=ff;
     }
 }
 
