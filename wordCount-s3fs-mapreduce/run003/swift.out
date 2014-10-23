@@ -1,0 +1,55 @@
+Swift trunk git-rev: 2d334140f2c288e5aeb3d354de0ecda35b4b3aac heads/master 6130 (modified locally)
+RunID: run003
+Warning: The @ syntax for function invocation is deprecated
+Progress: Thu, 23 Oct 2014 04:59:24+0000
+Progress: Thu, 23 Oct 2014 04:59:25+0000  Submitted:11
+Progress: Thu, 23 Oct 2014 04:59:27+0000  Stage in:2  Submitted:9
+Progress: Thu, 23 Oct 2014 04:59:28+0000  Submitted:9  Active:2
+Progress: Thu, 23 Oct 2014 04:59:36+0000  Submitted:9  Stage out:2
+Progress: Thu, 23 Oct 2014 04:59:37+0000  Stage in:1  Submitted:8  Finished successfully:2
+Progress: Thu, 23 Oct 2014 04:59:38+0000  Submitted:7  Active:2  Finished successfully:2
+Progress: Thu, 23 Oct 2014 04:59:45+0000  Submitted:7  Stage out:2  Finished successfully:2
+Progress: Thu, 23 Oct 2014 04:59:46+0000  Submitted:7  Stage out:1  Finished successfully:3
+Progress: Thu, 23 Oct 2014 04:59:47+0000  Stage in:1  Submitted:6  Finished successfully:4
+Progress: Thu, 23 Oct 2014 04:59:48+0000  Submitted:5  Active:2  Finished successfully:4
+Progress: Thu, 23 Oct 2014 04:59:56+0000  Submitted:5  Stage out:2  Finished successfully:4
+Progress: Thu, 23 Oct 2014 04:59:57+0000  Submitted:5  Stage out:1  Finished successfully:5
+Progress: Thu, 23 Oct 2014 04:59:58+0000  Stage in:1  Submitted:4  Finished successfully:6
+Progress: Thu, 23 Oct 2014 04:59:59+0000  Submitted:3  Active:2  Finished successfully:6
+Progress: Thu, 23 Oct 2014 05:00:06+0000  Submitted:3  Stage out:2  Finished successfully:6
+Progress: Thu, 23 Oct 2014 05:00:07+0000  Stage in:1  Submitted:2  Finished successfully:8
+Progress: Thu, 23 Oct 2014 05:00:08+0000  Submitted:1  Active:2  Finished successfully:8
+Progress: Thu, 23 Oct 2014 05:00:15+0000  Submitted:1  Stage out:2  Finished successfully:8
+Progress: Thu, 23 Oct 2014 05:00:16+0000  Submitted:1  Stage out:1  Finished successfully:9
+Progress: Thu, 23 Oct 2014 05:00:17+0000  Active:1  Finished successfully:10
+Progress: Thu, 23 Oct 2014 05:00:23+0000  Stage out:1  Finished successfully:10
+Progress: Thu, 23 Oct 2014 05:00:24+0000  Submitted:17  Finished successfully:11
+Progress: Thu, 23 Oct 2014 05:00:25+0000  Stage in:1  Submitted:15  Active:1  Finished successfully:11
+Progress: Thu, 23 Oct 2014 05:00:26+0000  Submitted:15  Active:2  Finished successfully:11
+Progress: Thu, 23 Oct 2014 05:00:31+0000  Submitted:15  Stage out:1  Finished successfully:12
+Progress: Thu, 23 Oct 2014 05:00:32+0000  Stage in:1  Submitted:14  Finished successfully:13
+Progress: Thu, 23 Oct 2014 05:00:33+0000  Submitted:13  Active:2  Finished successfully:13
+Progress: Thu, 23 Oct 2014 05:00:37+0000  Submitted:13  Stage out:1  Finished successfully:14
+Progress: Thu, 23 Oct 2014 05:00:38+0000  Stage in:1  Submitted:12  Finished successfully:15
+Progress: Thu, 23 Oct 2014 05:00:39+0000  Submitted:11  Active:2  Finished successfully:15
+Progress: Thu, 23 Oct 2014 05:00:44+0000  Submitted:11  Stage out:1  Finished successfully:16
+Progress: Thu, 23 Oct 2014 05:00:45+0000  Stage in:1  Submitted:10  Finished successfully:17
+Progress: Thu, 23 Oct 2014 05:00:46+0000  Submitted:9  Active:2  Finished successfully:17
+Progress: Thu, 23 Oct 2014 05:00:51+0000  Submitted:9  Stage out:1  Finished successfully:18
+Progress: Thu, 23 Oct 2014 05:00:52+0000  Stage in:1  Submitted:8  Finished successfully:19
+Progress: Thu, 23 Oct 2014 05:00:53+0000  Submitted:7  Active:2  Finished successfully:19
+Progress: Thu, 23 Oct 2014 05:00:58+0000  Submitted:7  Stage out:1  Finished successfully:20
+Progress: Thu, 23 Oct 2014 05:00:59+0000  Stage in:1  Submitted:6  Finished successfully:21
+Progress: Thu, 23 Oct 2014 05:01:00+0000  Submitted:5  Active:2  Finished successfully:21
+Progress: Thu, 23 Oct 2014 05:01:05+0000  Submitted:5  Stage out:1  Finished successfully:22
+Progress: Thu, 23 Oct 2014 05:01:06+0000  Stage in:1  Submitted:4  Finished successfully:23
+Progress: Thu, 23 Oct 2014 05:01:07+0000  Submitted:3  Active:2  Finished successfully:23
+Progress: Thu, 23 Oct 2014 05:01:12+0000  Submitted:3  Stage out:1  Finished successfully:24
+Progress: Thu, 23 Oct 2014 05:01:13+0000  Stage in:1  Submitted:2  Finished successfully:25
+Progress: Thu, 23 Oct 2014 05:01:14+0000  Submitted:1  Active:2  Finished successfully:25
+Progress: Thu, 23 Oct 2014 05:01:18+0000  Submitted:1  Active:1  Finished successfully:26
+Progress: Thu, 23 Oct 2014 05:01:19+0000  Active:1  Finished successfully:27
+Progress: Thu, 23 Oct 2014 05:01:24+0000  Submitted:1  Finished successfully:28
+Progress: Thu, 23 Oct 2014 05:01:25+0000  Active:1  Finished successfully:28
+Progress: Thu, 23 Oct 2014 05:01:28+0000  Stage out:1  Finished successfully:28
+Final status:Thu, 23 Oct 2014 05:01:28+0000  Finished successfully:29

@@ -1,0 +1,31 @@
+checking for paramfile
+no paramfile: using command line arguments
+Progress  2014-10-23 04:59:59.266543503+0000  LOG_START
+
+_____________________________________________________________________________
+
+        Wrapper (_swiftwrap.staging)
+_____________________________________________________________________________
+
+python -out stdout.txt -err stderr.txt -i -d /s3/wordCount-s3fs-mapreduce/input|/s3/wordCount-s3fs-mapreduce/output/6 -if /s3/wordCount-s3fs-mapreduce/input/split-0006 -of -cf /s3/wordCount-s3fs-mapreduce/output/6/*.txt -cdmfile -status provider -a /s3/wordCount-s3fs-mapreduce/wordCount.py 6 16 /s3/wordCount-s3fs-mapreduce/input/split-0006
+PWD=/s3/wordCount-s3fs-mapreduce/wordCount-run003/jobs/1/python-1t8yu7zl
+EXEC=/usr/bin/python
+STDIN=
+STDOUT=stdout.txt
+STDERR=stderr.txt
+DIRS=/s3/wordCount-s3fs-mapreduce/input|/s3/wordCount-s3fs-mapreduce/output/6
+INF=/s3/wordCount-s3fs-mapreduce/input/split-0006
+OUTF=
+COLLECT=/s3/wordCount-s3fs-mapreduce/output/6/*.txt
+ARGS=/s3/wordCount-s3fs-mapreduce/wordCount.py 6 16 /s3/wordCount-s3fs-mapreduce/input/split-0006
+ARGC=4
+Progress  2014-10-23 04:59:59.816776149+0000  CREATE_INPUTDIR
+Created output directory: /s3/wordCount-s3fs-mapreduce/input
+Created output directory: /s3/wordCount-s3fs-mapreduce/output/6
+Progress  2014-10-23 05:00:00.329543518+0000  EXECUTE
+Progress  2014-10-23 05:00:05.384565352+0000  COLLECT
+Collect list is /s3/wordCount-s3fs-mapreduce/output/6/*.txt
+Collecting /s3/wordCount-s3fs-mapreduce/output/6/*.txt
+Progress  2014-10-23 05:00:05.900399511+0000  EXECUTE_DONE
+Job ran successfully
+Progress  2014-10-23 05:00:05.950589909+0000  END

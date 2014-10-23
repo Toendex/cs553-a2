@@ -1,0 +1,38 @@
+checking for paramfile
+no paramfile: using command line arguments
+Progress  2014-10-23 05:01:07.521223277+0000  LOG_START
+
+_____________________________________________________________________________
+
+        Wrapper (_swiftwrap.staging)
+_____________________________________________________________________________
+
+python -out /s3/wordCount-s3fs-mapreduce/output/result-9.txt -err stderr.txt -i -d /s3/wordCount-s3fs-mapreduce/output/9|/s3/wordCount-s3fs-mapreduce/output/8|/s3/wordCount-s3fs-mapreduce/output|/s3/wordCount-s3fs-mapreduce/output/7|/s3/wordCount-s3fs-mapreduce/output/10|/s3/wordCount-s3fs-mapreduce/output/2|/s3/wordCount-s3fs-mapreduce/output/1|/s3/wordCount-s3fs-mapreduce/output/0|/s3/wordCount-s3fs-mapreduce/output/6|/s3/wordCount-s3fs-mapreduce/output/5|/s3/wordCount-s3fs-mapreduce/output/4|/s3/wordCount-s3fs-mapreduce/output/3 -if /s3/wordCount-s3fs-mapreduce/output/9/9.txt|/s3/wordCount-s3fs-mapreduce/output/7/9.txt|/s3/wordCount-s3fs-mapreduce/output/10/9.txt|/s3/wordCount-s3fs-mapreduce/output/8/9.txt|/s3/wordCount-s3fs-mapreduce/output/5/9.txt|/s3/wordCount-s3fs-mapreduce/output/6/9.txt|/s3/wordCount-s3fs-mapreduce/output/3/9.txt|/s3/wordCount-s3fs-mapreduce/output/4/9.txt|/s3/wordCount-s3fs-mapreduce/output/0/9.txt|/s3/wordCount-s3fs-mapreduce/output/2/9.txt|/s3/wordCount-s3fs-mapreduce/output/1/9.txt -of /s3/wordCount-s3fs-mapreduce/output/result-9.txt -cf -cdmfile -status provider -a /s3/wordCount-s3fs-mapreduce/merge.py /s3/wordCount-s3fs-mapreduce/output/0/9.txt /s3/wordCount-s3fs-mapreduce/output/1/9.txt /s3/wordCount-s3fs-mapreduce/output/2/9.txt /s3/wordCount-s3fs-mapreduce/output/3/9.txt /s3/wordCount-s3fs-mapreduce/output/4/9.txt /s3/wordCount-s3fs-mapreduce/output/5/9.txt /s3/wordCount-s3fs-mapreduce/output/6/9.txt /s3/wordCount-s3fs-mapreduce/output/7/9.txt /s3/wordCount-s3fs-mapreduce/output/8/9.txt /s3/wordCount-s3fs-mapreduce/output/9/9.txt /s3/wordCount-s3fs-mapreduce/output/10/9.txt
+PWD=/s3/wordCount-s3fs-mapreduce/wordCount-run003/jobs/k/python-kt8yu7zl
+EXEC=/usr/bin/python
+STDIN=
+STDOUT=/s3/wordCount-s3fs-mapreduce/output/result-9.txt
+STDERR=stderr.txt
+DIRS=/s3/wordCount-s3fs-mapreduce/output/9|/s3/wordCount-s3fs-mapreduce/output/8|/s3/wordCount-s3fs-mapreduce/output|/s3/wordCount-s3fs-mapreduce/output/7|/s3/wordCount-s3fs-mapreduce/output/10|/s3/wordCount-s3fs-mapreduce/output/2|/s3/wordCount-s3fs-mapreduce/output/1|/s3/wordCount-s3fs-mapreduce/output/0|/s3/wordCount-s3fs-mapreduce/output/6|/s3/wordCount-s3fs-mapreduce/output/5|/s3/wordCount-s3fs-mapreduce/output/4|/s3/wordCount-s3fs-mapreduce/output/3
+INF=/s3/wordCount-s3fs-mapreduce/output/9/9.txt|/s3/wordCount-s3fs-mapreduce/output/7/9.txt|/s3/wordCount-s3fs-mapreduce/output/10/9.txt|/s3/wordCount-s3fs-mapreduce/output/8/9.txt|/s3/wordCount-s3fs-mapreduce/output/5/9.txt|/s3/wordCount-s3fs-mapreduce/output/6/9.txt|/s3/wordCount-s3fs-mapreduce/output/3/9.txt|/s3/wordCount-s3fs-mapreduce/output/4/9.txt|/s3/wordCount-s3fs-mapreduce/output/0/9.txt|/s3/wordCount-s3fs-mapreduce/output/2/9.txt|/s3/wordCount-s3fs-mapreduce/output/1/9.txt
+OUTF=/s3/wordCount-s3fs-mapreduce/output/result-9.txt
+COLLECT=
+ARGS=/s3/wordCount-s3fs-mapreduce/merge.py /s3/wordCount-s3fs-mapreduce/output/0/9.txt /s3/wordCount-s3fs-mapreduce/output/1/9.txt /s3/wordCount-s3fs-mapreduce/output/2/9.txt /s3/wordCount-s3fs-mapreduce/output/3/9.txt /s3/wordCount-s3fs-mapreduce/output/4/9.txt /s3/wordCount-s3fs-mapreduce/output/5/9.txt /s3/wordCount-s3fs-mapreduce/output/6/9.txt /s3/wordCount-s3fs-mapreduce/output/7/9.txt /s3/wordCount-s3fs-mapreduce/output/8/9.txt /s3/wordCount-s3fs-mapreduce/output/9/9.txt /s3/wordCount-s3fs-mapreduce/output/10/9.txt
+ARGC=12
+Progress  2014-10-23 05:01:08.132640296+0000  CREATE_INPUTDIR
+Created output directory: /s3/wordCount-s3fs-mapreduce/output/9
+Created output directory: /s3/wordCount-s3fs-mapreduce/output/8
+Created output directory: /s3/wordCount-s3fs-mapreduce/output
+Created output directory: /s3/wordCount-s3fs-mapreduce/output/7
+Created output directory: /s3/wordCount-s3fs-mapreduce/output/10
+Created output directory: /s3/wordCount-s3fs-mapreduce/output/2
+Created output directory: /s3/wordCount-s3fs-mapreduce/output/1
+Created output directory: /s3/wordCount-s3fs-mapreduce/output/0
+Created output directory: /s3/wordCount-s3fs-mapreduce/output/6
+Created output directory: /s3/wordCount-s3fs-mapreduce/output/5
+Created output directory: /s3/wordCount-s3fs-mapreduce/output/4
+Created output directory: /s3/wordCount-s3fs-mapreduce/output/3
+Progress  2014-10-23 05:01:09.120500317+0000  EXECUTE
+Progress  2014-10-23 05:01:11.901244932+0000  EXECUTE_DONE
+Job ran successfully
+Progress  2014-10-23 05:01:12.003679253+0000  END
