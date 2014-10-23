@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "wordCount.py", line 19, in <module>
-    if not os.path.exist(filePath):
-AttributeError: 'module' object has no attribute 'exist'

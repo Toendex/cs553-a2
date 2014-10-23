@@ -21,7 +21,7 @@ if not os.path.exists(filePath):
 
 outputFileList=[]
 for i in range(0,outputFileNum):
-    f=open(filePath+str(i),'w')
+    f=open(filePath+str(i)+'.txt','w')
     outputFileList.append(f)
 
 for word,num in cnt.items():

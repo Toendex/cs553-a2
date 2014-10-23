@@ -29,19 +29,19 @@ file reduceinfiles[][];
 
 foreach f,i in infile {
 //    tracef("%s\n",@f);
-    string loc="output/"+@toString(i)+"/";
+    string loc="output/"+toString(i);
     tracef("infile location=%s\n",loc);
-    file interfiles[] <filesys_mapper; pattern="*", location=loc>;
+    file interfiles[] <filesys_mapper; pattern="*.txt", location=loc>;
     interfiles=wordCount(f,i,reduceNum,wc_script);
     foreach ff in interfiles {
-        reduceinfiles[@toInt(@ff)][i]=ff;
+        reduceinfiles[toInt(@ff)][i]=ff;
     }
 }
 
 file finalinputs[];
 
 foreach i in [0:reduceNum] {
-    string ofn="output/result-"+@toString(i);
+    string ofn="output/result-"+toString(i)+".txt";
     tracef("reduceNum ofn=%s\n",ofn);
     file mfile <single_file_mapper;file=ofn>;
     mfile=merge(reduceinfiles[i],m_script);
