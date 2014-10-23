@@ -16,7 +16,7 @@ for fileName in sys.argv[3:]:
     cnt.update(token)
 
 filePath=os.path.dirname(sys.argv[3])+'/../output/'+str(index)+'/';
-if not os.path.exist(filePath):
+if not os.path.exists(filePath):
     os.makedirs(filePath)
 
 outputFileList=[]

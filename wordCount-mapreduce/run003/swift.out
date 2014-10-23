@@ -1,0 +1,82 @@
+Swift trunk git-rev: 2d334140f2c288e5aeb3d354de0ecda35b4b3aac heads/master 6130 (modified locally)
+RunID: run003
+Warning: The @ syntax for function invocation is deprecated
+Progress: Thu, 23 Oct 2014 00:59:35+0000
+test
+infile location=output/1/
+infile location=output/4/
+infile location=output/5/
+infile location=output/6/
+infile location=output/7/
+infile location=output/8/
+infile location=output/9/
+infile location=output/10/
+infile location=output/2/
+infile location=output/0/
+reduceNum ofn=output/result-1
+reduceNum ofn=output/result-2
+reduceNum ofn=output/result-4
+reduceNum ofn=output/result-5
+reduceNum ofn=output/result-6
+reduceNum ofn=output/result-7
+reduceNum ofn=output/result-8
+reduceNum ofn=output/result-9
+reduceNum ofn=output/result-0
+reduceNum ofn=output/result-10
+infile location=output/3/
+reduceNum ofn=output/result-12
+reduceNum ofn=output/result-11
+reduceNum ofn=output/result-13
+reduceNum ofn=output/result-14
+reduceNum ofn=output/result-15
+reduceNum ofn=output/result-16
+reduceNum ofn=output/result-3
+
+Execution failed:
+Exception in python:
+    Arguments: [wordCount.py, 9, 16, input/split-0000]
+    Host: cloud-static
+    Directory: wordCount-run003/jobs/6/python-6sncl7zl
+	exception @ swift-int-staging.k, line: 167
+Caused by: 
+
+------- Application STDERR --------
+Traceback (most recent call last):
+  File "wordCount.py", line 19, in <module>
+    if not os.path.exist(filePath):
+AttributeError: 'module' object has no attribute 'exist'
+-----------------------------------
+
+	exception @ swift-int-staging.k, line: 163
+Caused by: Block task failed: Connection to worker lost
+java.io.EOFException
+	at org.globus.cog.coaster.channels.AbstractStreamCoasterChannel.readFromChannel(AbstractStreamCoasterChannel.java:253)
+	at org.globus.cog.coaster.channels.AbstractStreamCoasterChannel.stepNIO(AbstractStreamCoasterChannel.java:186)
+	at org.globus.cog.coaster.channels.NIOMultiplexer.loop(NIOMultiplexer.java:116)
+	at org.globus.cog.coaster.channels.NIOMultiplexer.run(NIOMultiplexer.java:75)
+
+
+	k:assign @ swift.k, line: 171
+Caused by: Exception in python:
+    Arguments: [wordCount.py, 9, 16, input/split-0000]
+    Host: cloud-static
+    Directory: wordCount-run003/jobs/6/python-6sncl7zl
+	exception @ swift-int-staging.k, line: 167
+Caused by: 
+
+------- Application STDERR --------
+Traceback (most recent call last):
+  File "wordCount.py", line 19, in <module>
+    if not os.path.exist(filePath):
+AttributeError: 'module' object has no attribute 'exist'
+-----------------------------------
+
+	exception @ swift-int-staging.k, line: 163
+Caused by: Block task failed: Connection to worker lost
+java.io.EOFException
+	at org.globus.cog.coaster.channels.AbstractStreamCoasterChannel.readFromChannel(AbstractStreamCoasterChannel.java:253)
+	at org.globus.cog.coaster.channels.AbstractStreamCoasterChannel.stepNIO(AbstractStreamCoasterChannel.java:186)
+	at org.globus.cog.coaster.channels.NIOMultiplexer.loop(NIOMultiplexer.java:116)
+	at org.globus.cog.coaster.channels.NIOMultiplexer.run(NIOMultiplexer.java:75)
+
+

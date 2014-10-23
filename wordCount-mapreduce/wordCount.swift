@@ -29,27 +29,22 @@ file reduceinfiles[][];
 
 foreach f,i in infile {
 //    tracef("%s\n",@f);
-    string pf="countInter-"+@toString(i)+"-";
-    tracef("infile pf=%s\n",pf);
-    file interfiles[] <filesys_mapper; prefix=pf, location="output">;
+    string loc="output/"+@toString(i)+"/";
+    tracef("infile location=%s\n",loc);
+    file interfiles[] <filesys_mapper; pattern="*", location=loc>;
     interfiles=wordCount(f,i,reduceNum,wc_script);
-    foreach fi in interfiles {
-        
+    foreach ff in interfiles {
+        reduceinfiles[@toInt(@ff)][i]=ff;
     }
 }
 
 file finalinputs[];
 
 foreach i in [0:reduceNum] {
-    string pf="countInter-";
-    string sf="-"+@toString(i);
     string ofn="output/result-"+@toString(i);
-    tracef("reduceNum pf=%s\n",pf);
-    tracef("reduceNum sf=%s\n",sf);
     tracef("reduceNum ofn=%s\n",ofn);
-    file reduceinfiles[] <filesys_mapper; prefix=pf, suffix=sf, location="output">;
     file mfile <single_file_mapper;file=ofn>;
-    mfile=merge(reduceinfiles,m_script);
+    mfile=merge(reduceinfiles[i],m_script);
     finalinputs[i]=mfile;
 }
 

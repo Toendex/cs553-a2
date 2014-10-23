@@ -1,11 +1,11 @@
-2014-10-23 00:57:03,842+0000 INFO  Loader JAVA Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 1.7.0_51
-2014-10-23 00:57:03,855+0000 INFO  Loader VERSION Swift trunk git-rev: 2d334140f2c288e5aeb3d354de0ecda35b4b3aac heads/master 6130 (modified locally)
-2014-10-23 00:57:03,855+0000 INFO  Loader RUN_ID run001
-2014-10-23 00:57:03,855+0000 INFO  Loader ARGUMENTS [-runid, run001, -logfile, /home/ubuntu/swift-cloud-tutorial/cs553-a2/wordCount-mapreduce/run001/swift.log, wordCount.swift]
-2014-10-23 00:57:03,855+0000 INFO  Loader MAX_HEAP 954728448
-2014-10-23 00:57:03,855+0000 INFO  Loader GLOBUS_HOSTNAME ip-172-31-3-79
-2014-10-23 00:57:03,855+0000 INFO  Loader CWD /home/ubuntu/swift-cloud-tutorial/cs553-a2/wordCount-mapreduce/.
-2014-10-23 00:57:03,859+0000 DEBUG Loader SWIFT_CONFIGURATION 
+2014-10-23 00:58:53,681+0000 INFO  Loader JAVA Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 1.7.0_51
+2014-10-23 00:58:53,685+0000 INFO  Loader VERSION Swift trunk git-rev: 2d334140f2c288e5aeb3d354de0ecda35b4b3aac heads/master 6130 (modified locally)
+2014-10-23 00:58:53,685+0000 INFO  Loader RUN_ID run002
+2014-10-23 00:58:53,685+0000 INFO  Loader ARGUMENTS [-runid, run002, -logfile, /home/ubuntu/swift-cloud-tutorial/cs553-a2/wordCount-mapreduce/run002/swift.log, wordCount.swift]
+2014-10-23 00:58:53,686+0000 INFO  Loader MAX_HEAP 954728448
+2014-10-23 00:58:53,687+0000 INFO  Loader GLOBUS_HOSTNAME ip-172-31-3-79
+2014-10-23 00:58:53,687+0000 INFO  Loader CWD /home/ubuntu/swift-cloud-tutorial/cs553-a2/wordCount-mapreduce/.
+2014-10-23 00:58:53,689+0000 DEBUG Loader SWIFT_CONFIGURATION 
 [D] /usr/local/bin/swift-trunk/etc/swift.conf
 [R] swift.conf
 [C] <Command Line>
@@ -62,7 +62,7 @@
     tracingEnabled: false                                   # [D] line 51
 }
 
-2014-10-23 00:57:03,861+0000 DEBUG textfiles BEGIN SWIFTSCRIPT:
+2014-10-23 00:58:53,692+0000 DEBUG textfiles BEGIN SWIFTSCRIPT:
 type file;
 
 file wc_script <"wordCount.py">;
@@ -90,7 +90,7 @@ file infile[] <filesys_mapper;pattern="split-*", location="input">;
 
 tracef("test\n");
 
-file reduceinfiles[][@length(infile)];
+file reduceinfiles[][];
 
 foreach f,i in infile {
 //    tracef("%s\n",@f);
@@ -118,29 +118,27 @@ file ffile <"output/finalresult.txt">;
 ffile=merge(finalinputs, f_py);
 
 
-2014-10-23 00:57:03,861+0000 DEBUG textfiles END SWIFTSCRIPT:
-2014-10-23 00:57:03,861+0000 INFO  Loader wordCount.swift: source file is new. Recompiling.
-2014-10-23 00:57:04,068+0000 ERROR VDLt2VDLx Could not compile SwiftScript source: line 28:22: unexpected token: @
-2014-10-23 00:57:04,069+0000 DEBUG VDLt2VDLx Full parser exception
-line 28:22: unexpected token: @
-	at org.globus.swift.parser.SwiftScriptParser.declpart(SwiftScriptParser.java:1215)
-	at org.globus.swift.parser.SwiftScriptParser.declaration(SwiftScriptParser.java:721)
-	at org.globus.swift.parser.SwiftScriptParser.topLevelStatement(SwiftScriptParser.java:294)
-	at org.globus.swift.parser.SwiftScriptParser.program(SwiftScriptParser.java:119)
-	at org.griphyn.vdl.toolkit.VDLt2VDLx.compile(VDLt2VDLx.java:79)
-	at org.griphyn.vdl.toolkit.VDLt2VDLx.compile(VDLt2VDLx.java:62)
-	at org.griphyn.vdl.karajan.Loader.compile(Loader.java:486)
+2014-10-23 00:58:53,692+0000 DEBUG textfiles END SWIFTSCRIPT:
+2014-10-23 00:58:53,692+0000 INFO  Loader wordCount.swift: source file is new. Recompiling.
+2014-10-23 00:58:54,631+0000 INFO  Warnings Warning: The @ syntax for function invocation is deprecated
+2014-10-23 00:58:54,705+0000 DEBUG Loader Detailed exception:
+org.griphyn.vdl.karajan.CompilationException: Compile error in foreach statement at line 30
+	at org.griphyn.vdl.engine.Karajan.foreachStat(Karajan.java:1188)
+	at org.griphyn.vdl.engine.Karajan.statement(Karajan.java:810)
+	at org.griphyn.vdl.engine.Karajan.statements(Karajan.java:770)
+	at org.griphyn.vdl.engine.Karajan.program(Karajan.java:419)
+	at org.griphyn.vdl.engine.Karajan.compile(Karajan.java:169)
+	at org.griphyn.vdl.karajan.Loader.compile(Loader.java:491)
 	at org.griphyn.vdl.karajan.Loader.main(Loader.java:191)
-2014-10-23 00:57:04,072+0000 DEBUG Loader Exception when compiling wordCount.swift
-org.griphyn.vdl.toolkit.VDLt2VDLx$ParsingException: Could not compile SwiftScript source: unexpected token: @
-	at org.griphyn.vdl.toolkit.VDLt2VDLx.compile(VDLt2VDLx.java:84)
-	at org.griphyn.vdl.toolkit.VDLt2VDLx.compile(VDLt2VDLx.java:62)
-	at org.griphyn.vdl.karajan.Loader.compile(Loader.java:486)
-	at org.griphyn.vdl.karajan.Loader.main(Loader.java:191)
-Caused by: line 28:22: unexpected token: @
-	at org.globus.swift.parser.SwiftScriptParser.declpart(SwiftScriptParser.java:1215)
-	at org.globus.swift.parser.SwiftScriptParser.declaration(SwiftScriptParser.java:721)
-	at org.globus.swift.parser.SwiftScriptParser.topLevelStatement(SwiftScriptParser.java:294)
-	at org.globus.swift.parser.SwiftScriptParser.program(SwiftScriptParser.java:119)
-	at org.griphyn.vdl.toolkit.VDLt2VDLx.compile(VDLt2VDLx.java:79)
-	... 3 more
+Caused by: org.griphyn.vdl.karajan.CompilationException: Compile error in procedure invocation at line 33
+	at org.griphyn.vdl.engine.Karajan.call(Karajan.java:1070)
+	at org.griphyn.vdl.engine.Karajan.statement(Karajan.java:807)
+	at org.griphyn.vdl.engine.Karajan.statements(Karajan.java:770)
+	at org.griphyn.vdl.engine.Karajan.foreachStat(Karajan.java:1180)
+	... 6 more
+Caused by: org.griphyn.vdl.karajan.CompilationException: Variable lo was not declared in this scope.
+	at org.griphyn.vdl.engine.Karajan.expressionToKarajan(Karajan.java:1576)
+	at org.griphyn.vdl.engine.Karajan.actualParameter(Karajan.java:1287)
+	at org.griphyn.vdl.engine.Karajan.actualParameter(Karajan.java:1273)
+	at org.griphyn.vdl.engine.Karajan.call(Karajan.java:904)
+	... 9 more
