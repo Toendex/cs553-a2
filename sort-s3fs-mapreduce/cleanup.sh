@@ -1,1 +1,2 @@
-sudo rm _con* run* outpu* wordCount-run* -rf
+sudo rm _con* run* outpu* sort-run* -rf
+sudo rm sort.swiftx sort.kml
