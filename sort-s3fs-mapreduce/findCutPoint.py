@@ -11,7 +11,7 @@ recordList=[]
 times=50
 readNum=partNum*times
 ern=[int(readNum/(len(sys.argv)-2)) for i in range(2,len(sys.argv))]
-remain=readNum-int(readNum/(len(sys.argv)-2))*(len(sys.argv)-2))
+remain=readNum-int(readNum/(len(sys.argv)-2))*(len(sys.argv)-2)
 for i in range(0,remain):
     ern[i]+=1
 

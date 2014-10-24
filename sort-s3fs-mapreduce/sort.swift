@@ -2,7 +2,7 @@ type file;
 
 app (file outfile) findCutPoint (int partNum, file[] infiles)
 {
-    python "/s3/sort-s3fs-mapreduce/findCutPoint.py" partNum @infiles stdout=@outfile;
+    python "/s3/sort-s3fs-mapreduce/findCutPoint.py" partNum @filenames(infiles) stdout=@outfile;
 }
 
 app (file outfile[]) sort (file infile, int index, file cutPointsFile)
@@ -23,7 +23,7 @@ app (file outfile) final (file[] infiles)
 int reduceNum = toInt(arg("reduceNum",   "100"));
 
 file infiles[] <filesys_mapper;pattern="split-*", location="/s3/sort-s3fs-mapreduce/input">;
-file cutPointsFile <"/s3/sort-s3fs-mapreduce/input/cutPoints">
+file cutPointsFile <"/s3/sort-s3fs-mapreduce/output/cutPoints">;
 
 cutPointsFile=findCutPoint(reduceNum,infiles);
 
