@@ -38,7 +38,7 @@ foreach f,i in infile {
 
 file finalinputs[];
 
-foreach i in [0:reduceNum] {
+foreach i in [0:reduceNum-1] {
     string ofn="/s3/wordCount-s3fs-mapreduce/output/result-"+toString(i)+".txt";
 //    tracef("reduceNum ofn=%s\n",ofn);
     file mfile <single_file_mapper;file=ofn>;

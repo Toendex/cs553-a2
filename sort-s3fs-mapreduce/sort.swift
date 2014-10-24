@@ -20,7 +20,7 @@ app (file outfile) final (file[] infiles)
     cat @filenames(infiles) stdout=@outfile;
 }
 
-int reduceNum = toInt(arg("reduceNum",   "100"));
+int reduceNum = toInt(arg("reduceNum",   "5"));
 
 file infiles[] <filesys_mapper;pattern="split-*", location="/s3/sort-s3fs-mapreduce/input">;
 file cutPointsFile <"/s3/sort-s3fs-mapreduce/output/cutPoints">;
@@ -42,7 +42,7 @@ foreach f,i in infiles {
 
 file finalinputs[];
 
-foreach i in [0:reduceNum) {
+foreach i in [0:reduceNum-1] {
     string ofn="/s3/sort-s3fs-mapreduce/output/sorted-"+toString(i)+".txt";
 //    tracef("reduceNum ofn=%s\n",ofn);
     file mfile <single_file_mapper;file=ofn>;

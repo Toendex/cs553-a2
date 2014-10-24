@@ -34,7 +34,7 @@ foreach f,i in infile {
 
 file finalinputs[];
 
-foreach i in [0:reduceNum] {
+foreach i in [0:reduceNum-1] {
     string pf="countInter-";
     string sf="-"+@toString(i);
     string ofn="output/result-"+@toString(i);
