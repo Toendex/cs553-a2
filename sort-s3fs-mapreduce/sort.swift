@@ -42,7 +42,7 @@ foreach f,i in infiles {
 
 file finalinputs[];
 
-foreach i in [0:reduceNum] {
+foreach i in [0:reduceNum) {
     string ofn="/s3/sort-s3fs-mapreduce/output/sorted-"+toString(i)+".txt";
 //    tracef("reduceNum ofn=%s\n",ofn);
     file mfile <single_file_mapper;file=ofn>;

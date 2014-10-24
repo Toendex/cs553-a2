@@ -27,4 +27,4 @@ for ernIndex, filePath in enumerate(sys.argv[2:]):
 
 recordList.sort(key=lambda x:x[:10])
 recordList=recordList[times::times]
-print ''.join(recordList)
+print ''.join(recordList),

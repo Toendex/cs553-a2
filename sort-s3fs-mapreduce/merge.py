@@ -12,5 +12,5 @@ for filePath in sys.argv[1:]:
 
 recordList.sort(key=lambda x:x[:10])
 
-print '\r\n'.join(recordList)
-print '\r\n'
+print '\r\n'.join(recordList),
+print '\r\n',
