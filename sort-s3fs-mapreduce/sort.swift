@@ -56,4 +56,4 @@ foreach i in [0:reduceNum-1] {
 
 file ffile <"/s3/sort-s3fs-mapreduce/output/sorted.txt">;
 
-ffile=final(finalinputs);
+//ffile=final(finalinputs);
